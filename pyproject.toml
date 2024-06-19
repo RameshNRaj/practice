@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=68.2.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "csv_transformation"
+description = "csv_transformation"
+authors = [
+    { name = "sample", email = "sample@example.com" },
+]
+dynamic = ["version"]
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "polars == 0.19.19",
+    "pandas == 2.0.3"
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest == 7.4.3",
+    "coverage == 7.3.2",
+    "testcontainers == 3.7.0",
+    "autopep8"
+]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.dynamic]
+version = { file = "VERSION.txt" }
+
+[tool.pytest]
+norecursedirs = ["dist", "build", ".tox", ".toml"]
+testpaths = "tests/"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q --junitxml=test-report.xml"
+pythonpath = [
+    "src/"
+]
+testpaths = [
+    "tests/"
+]
+
+[tool.coverage.run]
+source = ["src/"]
+omit = ["**/__init__.py", "**/tests/**"]
+command_line = "-m pytest"
+
+[tool.coverage.xml]
+output = "coverage.xml"
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "@(abc.)?abstractmethod"
+]
