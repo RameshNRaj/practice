@@ -14,5 +14,7 @@ pip install .[test]
 coverage run
 coverage report
 
+## excecution command
+python src/csv_transformation/transformation.py
 
 

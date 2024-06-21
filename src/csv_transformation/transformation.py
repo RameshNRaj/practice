@@ -18,7 +18,7 @@ class TransformData:
         file_name2 = "survey_data.csv"
         survey_df = self.read_csv(self.file_path, file_name2)
         address_df = address_df.with_columns(pl.lit("spain").alias('LANGUAGE')).unique()
-        joined_df= address_df.join(survey_df, on="RESPONSE_ID", how="left")
+        joined_df= address_df.join(survey_df, on="RESPONSE_ID", how="left", coalesce=True)
         final_df= joined_df.filter(pl.col('CITY') == "Toluca")
         self.write_csv(final_df, self.file_path, "output.csv")
 
