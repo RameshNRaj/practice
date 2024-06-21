@@ -1,16 +1,18 @@
-
 import unittest
 
+from unittest.mock import patch
 from exam.main import MeatPerson
 
 
 class TestMain(unittest.TestCase):
-    def test_main(self):
+
+    @patch('builtins.input', return_value='Sample')
+    def test_greet_with_mocked_input(self, mock_input):
+        expected_output = "Hello Boss, Sample!"
         meat_person = MeatPerson()
-        meat_person.main()
-    # def test_run(self):
-    #     meat_person = MeatPerson()
-    #     self.assertEqual(meat_person.run('sample'), 'Hello Boss, sample!')
-    #     # self.assertEqual(meat_person('Suresh'), 'Hello, Suresh!')
+        output = meat_person.main()
+        self.assertEqual(output, expected_output)
 
-
+#
+# if __name__ == '__main__':
+#     unittest.main()

@@ -8,7 +8,7 @@ class MeatPerson:
     def main(self):
         names = input("enter your name")
         meeting = self.run(names)
-        print(meeting)
+        return meeting
 
 
 if __name__ == "__main__":
