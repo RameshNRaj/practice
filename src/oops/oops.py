@@ -6,6 +6,7 @@ class Student:
 
     ## Method
     def result(self, total_marks: int):
+
         if total_marks > 50:
             return "pass"
         else:
