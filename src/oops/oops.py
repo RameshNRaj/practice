@@ -13,8 +13,6 @@ class Student:
 
     ## Main Method
     def main(self, name, total_mark):
-        # self.name = input("enter your name")
-        # total_mark = int(input("enter your total marks"))
         res = self.result(total_mark)
         return name, res
 
@@ -23,7 +21,6 @@ class Student:
 class Grade(Student):
     def __init__(self):
         super().__init__()
-        # self.total_marks = total_mark
 
     def grading(self, total_mark: int):
         if total_mark > 90:
